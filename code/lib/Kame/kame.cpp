@@ -22,13 +22,13 @@ void Kame::init(){
 
     // Init an oscillator for each servo
     for(int i=0; i<8; i++){
-        oscillator[i].start();
+        oscillator[i].start();      
         ledcSetup(i, 50, 16);
-        ledcAttachPin(board_pins[i], i);
+        ledcAttachPin(board_pins[i], i);     
     }
-    
+
     arm();
-    home();
+    home();  
 }
 
 
