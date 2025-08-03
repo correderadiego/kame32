@@ -1,8 +1,9 @@
 #ifndef kame_h
 #define kame_h
 
-#include <Oscillator.h>
+#include "Oscillator.h"
 #include <ArduinoNvs.h>
+#include "ServoHandler.h"
 
 #define SERVO_0_PIN         25
 #define SERVO_1_PIN         18
@@ -18,18 +19,8 @@
 
 class Kame{
 public:
-    void init();
-
-    void setCalibration(int calibration[8]);
-    int* loadCalibration();
-    void saveCalibration(int calibration[8]);
-
-    void arm();
-    void disarm();
-
-    void reverseServo(int id);
-
-    void setServo(int id, float target);
+    void init();    
+    
     float getServo(int id);
     void moveServos(int time, float target[8]);
 
@@ -50,6 +41,7 @@ public:
     void frontBack(float steps, int period);
 
 //private:
+    ServoHandler servoHandler;
     Oscillator oscillator[8];
     int board_pins[8];
     int calibration[8];
@@ -61,7 +53,7 @@ public:
     float _servo_position[8];
     bool _armed = false;
 
-    int angToUsec(float value);
+    
     void execute(float steps, int period[8], int amplitude[8], int offset[8], int phase[8]);
 };
 
