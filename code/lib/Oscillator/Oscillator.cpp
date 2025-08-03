@@ -1,4 +1,4 @@
-#include "Octosnake.h"
+#include "Oscillator.h"
 
 Oscillator::Oscillator(){
     _period = 2000;
